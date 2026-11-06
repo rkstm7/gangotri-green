@@ -318,6 +318,19 @@ const ProjectsSection = () => {
   return (
     <>
       <style>{KF}</style>
+      <style>{`
+        .prj-header { padding: 0 72px; margin-bottom: 48px; }
+        .prj-track { padding-left: 72px; padding-right: 72px; }
+        @media (max-width: 768px) {
+          .prj-header { padding: 0 20px; margin-bottom: 32px; }
+          .prj-track { padding-left: 16px !important; padding-right: 16px !important; }
+          .prj-heading { font-size: 26px !important; }
+        }
+        @media (max-width: 480px) {
+          .prj-header { padding: 0 16px; }
+          .prj-heading { font-size: 22px !important; }
+        }
+      `}</style>
 
       <section
         id="projects"
@@ -344,7 +357,7 @@ const ProjectsSection = () => {
         }} />
 
         {/* ── Header ── */}
-        <div style={{ padding: '0 72px', marginBottom: '48px' }}>
+        <div className="prj-header">
 
           <div style={{
             display: 'inline-flex', alignItems: 'center', gap: '10px',
@@ -365,7 +378,7 @@ const ProjectsSection = () => {
             </p>
           </div>
 
-          <h2 style={{
+          <h2 className="prj-heading" style={{
             fontSize: '36px', fontWeight: '800',
             color: '#ffffff', marginBottom: '10px',
             letterSpacing: '-0.3px', lineHeight: '1.2',
@@ -388,16 +401,14 @@ const ProjectsSection = () => {
         <div
           id="prj-track"
           ref={trackRef}
+          className="prj-track"
           style={{
             display: 'flex',
             gap: `${CARD_GAP}px`,
             overflowX: 'auto',
-            paddingLeft: '72px',
-            paddingRight: '72px',
             paddingBottom: '20px',
             scrollSnapType: 'x mandatory',
             WebkitOverflowScrolling: 'touch',
-            /* perspective on the container for collective 3D */
             perspective: '1200px',
           }}
         >

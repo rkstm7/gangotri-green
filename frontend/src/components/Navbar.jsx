@@ -27,8 +27,8 @@ const Navbar = () => {
 
         {/* Logo */}
         <img
-          src="/src/assets/gangotri-logo.webp"
-          alt="Gangotri Green"
+          src="/gangotri-logo.webp"
+          alt="Gangotri Green — Past to Possibility"
           style={{
             height: '48px',
             width: 'auto',

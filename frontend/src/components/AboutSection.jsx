@@ -97,6 +97,18 @@ const AboutSection = () => {
     <>
       <style>{KEYFRAMES}</style>
 
+      <style>{`
+        @media (max-width: 900px) {
+          .about-inner { flex-direction: column !important; gap: 40px !important; }
+          .about-img-wrap { width: 100% !important; max-width: 100% !important; }
+        }
+        @media (max-width: 600px) {
+          .about-inner { padding: 0 20px !important; }
+          .about-heading { font-size: 24px !important; white-space: normal !important; }
+          .about-stats { gap: 16px !important; }
+        }
+      `}</style>
+
       <section
         ref={sectionRef}
         style={{
@@ -109,7 +121,7 @@ const AboutSection = () => {
           overflow: 'hidden',
         }}
       >
-        <div style={{
+        <div className="about-inner" style={{
           display: 'flex',
           alignItems: 'center',
           gap: '60px',
@@ -123,10 +135,10 @@ const AboutSection = () => {
           {/* ════════════════════════════════
               LEFT — image block
           ════════════════════════════════ */}
-          <div style={{
+          <div className="about-img-wrap" style={{
             position: 'relative',
             flexShrink: 0,
-            width: '720px',
+            width: 'min(720px, 100%)',
             height: '420px',
             overflow: 'visible',
             animation: anim('aboutSlideRight', 1.0, 0.1),
@@ -308,11 +320,11 @@ const AboutSection = () => {
               animation: anim('aboutFadeUp', 0.7, 0.45),
               marginBottom: '18px',
             }}>
-              <h2 style={{
-                fontSize: '32px', fontWeight: '800',
+              <h2 className="about-heading" style={{
+                fontSize: 'clamp(22px, 3vw, 32px)', fontWeight: '800',
                 color: '#1a1a1a',
                 letterSpacing: '-0.3px', lineHeight: '1.2',
-                whiteSpace: 'nowrap', margin: 0,
+                whiteSpace: 'normal', margin: 0,
                 position: 'relative', display: 'inline-block',
               }}>
                 Gangotri Green Properties
@@ -350,8 +362,9 @@ const AboutSection = () => {
             </p>
 
             {/* Stats row */}
-            <div style={{
+            <div className="about-stats" style={{
               display: 'flex', gap: '32px',
+              flexWrap: 'wrap',
               marginBottom: '32px',
               borderTop: '1px solid #f0f0f0',
               borderBottom: '1px solid #f0f0f0',

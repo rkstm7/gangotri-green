@@ -255,7 +255,7 @@ const HeroSection = () => {
             <h1 style={{ lineHeight: '1.18', letterSpacing: '-0.5px', marginBottom: '0' }}>
               <span style={{
                 display: 'block',
-                fontSize: '46px',
+                fontSize: 'clamp(28px, 5vw, 46px)',
                 fontWeight: '800',
                 backgroundImage: 'linear-gradient(90deg, #F5C518 0%, #ffe97a 40%, #c9a030 60%, #F5C518 100%)',
                 backgroundSize: '400px 100%',
@@ -273,10 +273,10 @@ const HeroSection = () => {
               <span style={{
                 display: 'block',
                 color: 'white',
-                fontSize: '50px',
+                fontSize: 'clamp(22px, 4vw, 50px)',
                 fontWeight: '800',
                 lineHeight: '1.12',
-                whiteSpace: 'nowrap',
+                whiteSpace: 'normal',
                 animation: anim('fadeSlideUp', 0.9, 0.72),
               }}>
                 They're Not Making It Anymore.

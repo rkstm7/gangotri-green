@@ -165,6 +165,21 @@ const LegacySection = () => {
   return (
     <>
       <style>{KF}</style>
+      <style>{`
+        @media (max-width: 900px) {
+          .legacy-woman { display: none !important; }
+          .legacy-bungalow { display: none !important; }
+          .legacy-content { padding: 60px 24px 60px 40px !important; max-width: 100% !important; }
+          .legacy-gold-bar { display: none !important; }
+          .legacy-heading { font-size: 34px !important; white-space: normal !important; }
+        }
+        @media (max-width: 600px) {
+          .legacy-content { padding: 48px 20px !important; }
+          .legacy-heading { font-size: 28px !important; }
+          .legacy-btns { flex-direction: column !important; }
+          .legacy-btns a { width: 100% !important; text-align: center !important; justify-content: center !important; }
+        }
+      `}</style>
 
       <section
         ref={ref}
@@ -197,7 +212,7 @@ const LegacySection = () => {
         }} />
 
         {/* ── Thin gold vertical accent ── */}
-        <div style={{
+        <div className="legacy-gold-bar" style={{
           position: 'absolute',
           left: '108px', top: '64px', bottom: '64px',
           width: '2.5px',
@@ -208,6 +223,7 @@ const LegacySection = () => {
 
         {/* ── Bungalow center ── */}
         <img
+          className="legacy-bungalow"
           src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=700&q=80"
           alt="Luxury Bungalow"
           style={{
@@ -227,6 +243,7 @@ const LegacySection = () => {
 
         {/* ── Woman right ── */}
         <img
+          className="legacy-woman"
           src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=500&q=85&fit=crop&crop=top"
           alt="Brand Ambassador"
           style={{
@@ -247,7 +264,7 @@ const LegacySection = () => {
         />
 
         {/* ════════════════ TEXT CONTENT ════════════════ */}
-        <div style={{
+        <div className="legacy-content" style={{
           position: 'relative', zIndex: 4,
           padding: '80px 0 80px 130px',
           maxWidth: '580px',
@@ -278,11 +295,11 @@ const LegacySection = () => {
             marginBottom: '20px',
             animation: a('lgSlideLeft', 0.85, 0.4),
           }}>
-            <h2 style={{
-              fontSize: '50px', fontWeight: '800',
+            <h2 className="legacy-heading" style={{
+              fontSize: 'clamp(28px, 4vw, 50px)', fontWeight: '800',
               color: '#1a1a1a', lineHeight: '1.12',
               letterSpacing: '-0.5px', margin: 0,
-              whiteSpace: 'nowrap',
+              whiteSpace: 'normal',
               position: 'relative', display: 'inline-block',
             }}>
               Not Just Land. A Legacy.
@@ -315,7 +332,7 @@ const LegacySection = () => {
           </p>
 
           {/* Buttons */}
-          <div style={{
+          <div className="legacy-btns" style={{
             display: 'flex', gap: '14px',
             marginBottom: '42px', flexWrap: 'wrap',
             animation: a('lgFadeUp', 0.7, 0.68),

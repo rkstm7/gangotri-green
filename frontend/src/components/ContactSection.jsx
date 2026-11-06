@@ -141,6 +141,17 @@ const ContactSection = () => {
   return (
     <>
       <style>{KF}</style>
+      <style>{`
+        @media (max-width: 768px) {
+          .ct-chips { flex-direction: column !important; align-items: stretch !important; }
+          .ct-chips a { justify-content: center; }
+          .ct-heading { font-size: 28px !important; }
+          .ct-card { padding: 28px 18px !important; }
+        }
+        @media (max-width: 480px) {
+          .ct-heading { font-size: 24px !important; }
+        }
+      `}</style>
 
       <section
         ref={ref}
@@ -194,7 +205,7 @@ const ContactSection = () => {
           </div>
 
           {/* Heading */}
-          <h2 style={{
+          <h2 className="ct-heading" style={{
             fontSize: '38px', fontWeight: '800',
             color: '#1a1a1a', marginBottom: '14px', lineHeight: '1.18',
             letterSpacing: '-0.4px',
@@ -214,7 +225,7 @@ const ContactSection = () => {
           </p>
 
           {/* ── Contact chips — centered row ── */}
-          <div style={{
+          <div className="ct-chips" style={{
             display: 'flex', gap: '14px',
             justifyContent: 'center', flexWrap: 'wrap',
             marginBottom: '44px',
@@ -243,7 +254,7 @@ const ContactSection = () => {
           </div>
 
           {/* ── Form card ── */}
-          <div style={{
+          <div className="ct-card" style={{
             border: '1px solid #ebebeb',
             borderRadius: '16px',
             padding: '40px 36px',

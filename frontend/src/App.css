@@ -228,6 +228,13 @@ body {
   border-radius: 4px;
 }
 
+/* ── Drawer responsive ── */
+@media (max-width: 360px) {
+  .drawer {
+    width: 100vw;
+  }
+}
+
 /* ══════════════════════════════════
    DRAWER ANIMATIONS
 ══════════════════════════════════ */
@@ -374,4 +381,90 @@ body {
 .whatsapp-btn:hover {
   transform: scale(1.10);
   box-shadow: 0 6px 22px rgba(125, 194, 67, 0.60);
+}
+
+/* ══════════════════════════════════
+   RESPONSIVE — TABLET (≤ 1024px)
+══════════════════════════════════ */
+@media (max-width: 1024px) {
+  .hero-section {
+    height: 580px;
+  }
+  .hero-content {
+    padding-left: 60px;
+    padding-bottom: 120px;
+  }
+  .hero-woman {
+    height: 78%;
+    right: 2%;
+  }
+}
+
+/* ══════════════════════════════════
+   RESPONSIVE — MOBILE (≤ 768px)
+══════════════════════════════════ */
+@media (max-width: 768px) {
+  /* ── Hero ── */
+  .hero-section {
+    height: auto;
+    min-height: 520px;
+  }
+  .hero-bg {
+    background-position: center 40%;
+  }
+  .hero-overlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.55) 0%,
+      rgba(0,0,0,0.35) 60%,
+      rgba(0,0,0,0.10) 100%
+    );
+  }
+  .hero-content {
+    padding: 90px 24px 140px;
+    align-items: flex-start;
+  }
+  .hero-woman {
+    height: 52%;
+    right: -4%;
+    bottom: 80px;
+    opacity: 0.35;
+  }
+  .hero-wave {
+    bottom: -1px;
+  }
+  .hero-wave svg {
+    height: 70px;
+  }
+
+  /* ── Navbar ── */
+  .navbar {
+    padding: 12px 18px;
+  }
+
+  /* ── WhatsApp ── */
+  .whatsapp-btn {
+    width: 50px;
+    height: 50px;
+    bottom: 16px;
+  }
+}
+
+/* ══════════════════════════════════
+   RESPONSIVE — SMALL MOBILE (≤ 480px)
+══════════════════════════════════ */
+@media (max-width: 480px) {
+  .hero-section {
+    min-height: 480px;
+  }
+  .hero-content {
+    padding: 80px 20px 130px;
+  }
+  .hero-woman {
+    display: none;
+  }
+  .btn-explore {
+    padding: 10px 24px;
+    font-size: 13px;
+  }
 }

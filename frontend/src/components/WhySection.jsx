@@ -99,6 +99,7 @@ const FeatureCard = ({ f, inView, delay, isLast }) => {
 
   return (
     <div
+      className="why-card"
       style={{
         flex: '1',
         maxWidth: '300px',
@@ -238,6 +239,19 @@ const WhySection = () => {
   return (
     <>
       <style>{KF}</style>
+      <style>{`
+        @media (max-width: 900px) {
+          .why-header { margin: 0 auto 0 24px !important; }
+          .why-cards { flex-wrap: wrap !important; padding: 0 24px !important; }
+          .why-card { max-width: calc(50% - 8px) !important; flex: 0 0 calc(50% - 8px) !important; border-right: none !important; border-bottom: 1px solid #f0f0f0; }
+        }
+        @media (max-width: 560px) {
+          .why-header { margin: 0 20px !important; padding: 0 !important; }
+          .why-cards { padding: 0 16px !important; gap: 16px !important; }
+          .why-card { max-width: 100% !important; flex: 1 1 100% !important; }
+          .why-heading { font-size: 24px !important; }
+        }
+      `}</style>
 
       <section
         ref={ref}
@@ -245,7 +259,7 @@ const WhySection = () => {
       >
 
         {/* ── Header block ── */}
-        <div style={{
+        <div className="why-header" style={{
           maxWidth: '1100px',
           margin: '0 auto 0 60px',
           padding: '0 40px',
@@ -277,8 +291,8 @@ const WhySection = () => {
             animation: a('wyFadeUp', 0.75, 0.22),
             marginBottom: '10px',
           }}>
-            <h2 style={{
-              fontSize: '34px', fontWeight: '800',
+            <h2 className="why-heading" style={{
+              fontSize: 'clamp(22px, 3vw, 34px)', fontWeight: '800',
               color: '#111', letterSpacing: '-0.3px',
               lineHeight: '1.2', margin: 0,
             }}>
@@ -297,7 +311,7 @@ const WhySection = () => {
         </div>
 
         {/* ── 4 cards ── */}
-        <div style={{
+        <div className="why-cards" style={{
           display: 'flex',
           justifyContent: 'center',
           gap: '0',

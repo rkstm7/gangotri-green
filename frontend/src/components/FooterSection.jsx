@@ -139,11 +139,26 @@ const FooterSection = () => {
       </div>
 
       {/* ── Main footer content ── */}
-      <div style={{
-        maxWidth: '1200px', margin: '0 auto', padding: '60px 40px 40px',
-        display: 'grid', gridTemplateColumns: '1fr 1.4fr 1fr 1.4fr', gap: '40px',
-        position: 'relative', zIndex: 1,
-      }}>
+      <style>{`
+        .footer-grid {
+          max-width: 1200px; margin: 0 auto; padding: 60px 40px 40px;
+          display: grid; grid-template-columns: 1fr 1.4fr 1fr 1.4fr; gap: 40px;
+          position: relative; z-index: 1;
+        }
+        .footer-copy {
+          padding: 16px 40px; display: flex; justify-content: space-between;
+          align-items: center; max-width: 1200px; margin: 0 auto;
+          position: relative; z-index: 1;
+        }
+        @media (max-width: 1024px) {
+          .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+        }
+        @media (max-width: 640px) {
+          .footer-grid { grid-template-columns: 1fr; padding: 40px 20px 30px; gap: 28px; }
+          .footer-copy { flex-direction: column; gap: 8px; text-align: center; padding: 16px 20px; }
+        }
+      `}</style>
+      <div className="footer-grid">
 
         {/* Column 1: Follow Us & Reach Us */}
         <div>
@@ -224,7 +239,7 @@ const FooterSection = () => {
       </div>
 
       {/* ── Copyright bar ── */}
-      <div style={{ padding: '16px 40px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+      <div className="footer-copy">
         <p style={{ fontSize: '13px', color: '#666', margin: 0 }}>
           Copyright © <strong style={{ color: '#1a1a1a' }}>Gangotri Green Properties</strong> 2026. All rights reserved.
         </p>

@@ -88,173 +88,150 @@ const TestimonialsSection = () => {
   const [hoveredSide, setHoveredSide] = useState(null);
 
   return (
-    <section style={{
-      width: '100%',
-      background: 'white',
-      padding: '80px 0 80px',
-      boxSizing: 'border-box',
-    }}>
-      {/* ── Centered container ── */}
-      <div style={{
-        maxWidth: '100%',
-        margin: '0 auto',
-        padding: '0 140px',
-        boxSizing: 'border-box',
-      }}>
+    <>
+      <style>{`
+        .tst-section { width: 100%; background: white; padding: 80px 0; box-sizing: border-box; }
+        .tst-container { max-width: 100%; margin: 0 auto; padding: 0 140px; box-sizing: border-box; }
+        .tst-grid {
+          display: grid;
+          grid-template-columns: 3.5fr 1.6fr;
+          grid-template-rows: 1fr 1fr;
+          gap: 10px;
+          height: 460px;
+          position: relative;
+        }
+        @media (max-width: 1100px) {
+          .tst-container { padding: 0 40px; }
+        }
+        @media (max-width: 900px) {
+          .tst-container { padding: 0 24px; }
+          .tst-grid {
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 260px 180px;
+            height: auto;
+          }
+          .tst-featured { grid-column: 1 / 3 !important; grid-row: 1 !important; }
+          .tst-side-0 { grid-column: 1 !important; grid-row: 2 !important; }
+          .tst-side-1 { grid-column: 2 !important; grid-row: 2 !important; }
+        }
+        @media (max-width: 560px) {
+          .tst-section { padding: 60px 0; }
+          .tst-container { padding: 0 16px; }
+          .tst-grid {
+            grid-template-columns: 1fr;
+            grid-template-rows: 240px 160px 160px;
+            height: auto;
+          }
+          .tst-featured { grid-column: 1 !important; grid-row: 1 !important; }
+          .tst-side-0 { grid-column: 1 !important; grid-row: 2 !important; }
+          .tst-side-1 { grid-column: 1 !important; grid-row: 3 !important; }
+          .tst-heading { font-size: 24px !important; }
+        }
+      `}</style>
 
-      {/* ── Header ── */}
-      <div style={{ marginBottom: '32px' }}>
-        <p style={{
-          fontSize: '11.5px',
-          fontWeight: '700',
-          color: '#F5C518',
-          letterSpacing: '2.5px',
-          textTransform: 'uppercase',
-          marginBottom: '10px',
-        }}>
-          TESTIMONIALS
-        </p>
-        <h2 style={{
-          fontSize: '32px',
-          fontWeight: '700',
-          color: '#111111',
-          marginBottom: '6px',
-          letterSpacing: '-0.2px',
-          lineHeight: '1.2',
-        }}>
-          What our clients say
-        </h2>
-        <p style={{
-          fontSize: '15px',
-          color: '#999',
-          margin: 0,
-        }}>
-          We are there with you at every step of the way.
-        </p>
-      </div>
+      <section className="tst-section">
+        <div className="tst-container">
 
-      {/* ── Grid: large left + 2 stacked right ── */}
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: '3.5fr 1.6fr',
-        gridTemplateRows: '1fr 1fr',
-        gap: '10px',
-        height: '460px',
-        position: 'relative',
-      }}>
-
-        {/* Featured — spans both rows */}
-        <div
-          style={{
-            gridColumn: '1',
-            gridRow: '1 / 3',
-            position: 'relative',
-            borderRadius: '0',
-            overflow: 'hidden',
-            cursor: 'pointer',
-          }}
-          onMouseEnter={() => setHoveredFeat(true)}
-          onMouseLeave={() => setHoveredFeat(false)}
-        >
-          <img
-            src={testimonials.featured.img}
-            alt={testimonials.featured.name}
-            onError={e => { e.target.src = 'https://images.unsplash.com/photo-1609220136736-443140cffec6?w=900&q=80'; }}
-            style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              objectPosition: 'center top',
-              display: 'block',
-              filter: hoveredFeat ? 'brightness(0.75)' : 'brightness(0.65)',
-              transition: 'filter 0.3s ease, transform 0.4s ease',
-              transform: hoveredFeat ? 'scale(1.03)' : 'scale(1)',
-            }}
-          />
-          <PlayOverlay size={64} />
-          <CardLabel
-            name={testimonials.featured.name}
-            subtitle={testimonials.featured.subtitle}
-          />
-        </div>
-
-        {/* Side cards */}
-        {testimonials.side.map((t, i) => (
-          <div
-            key={t.name}
-            style={{
-              gridColumn: '2',
-              gridRow: i + 1,
-              position: 'relative',
-              borderRadius: '0',
-              overflow: 'hidden',
-              cursor: 'pointer',
-            }}
-            onMouseEnter={() => setHoveredSide(i)}
-            onMouseLeave={() => setHoveredSide(null)}
-          >
-            <img
-              src={t.img}
-              alt={t.name}
-              style={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                objectPosition: 'center top',
-                display: 'block',
-                filter: hoveredSide === i ? 'brightness(0.75)' : 'brightness(0.65)',
-                transition: 'filter 0.3s ease, transform 0.4s ease',
-                transform: hoveredSide === i ? 'scale(1.03)' : 'scale(1)',
-              }}
-            />
-            <PlayOverlay size={44} />
-            <CardLabel
-              name={t.name}
-              subtitle={t.subtitle}
-              small
-            />
+          {/* ── Header ── */}
+          <div style={{ marginBottom: '32px' }}>
+            <p style={{
+              fontSize: '11.5px', fontWeight: '700', color: '#F5C518',
+              letterSpacing: '2.5px', textTransform: 'uppercase', marginBottom: '10px',
+            }}>
+              TESTIMONIALS
+            </p>
+            <h2 className="tst-heading" style={{
+              fontSize: '32px', fontWeight: '700', color: '#111111',
+              marginBottom: '6px', letterSpacing: '-0.2px', lineHeight: '1.2',
+            }}>
+              What our clients say
+            </h2>
+            <p style={{ fontSize: '15px', color: '#999', margin: 0 }}>
+              We are there with you at every step of the way.
+            </p>
           </div>
-        ))}
 
-        {/* ── Yellow button — floats over bottom-right corner of grid ── */}
-        <a
-          href="#contact"
-          aria-label="Scroll down"
-          style={{
-            position: 'absolute',
-            bottom: '-22px',
-            right: '0px',
-            zIndex: 10,
-            width: '44px',
-            height: '44px',
-            borderRadius: '50%',
-            background: '#F5C518',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            boxShadow: '0 4px 14px rgba(245,197,24,0.45)',
-            textDecoration: 'none',
-            transition: 'transform 0.2s, box-shadow 0.2s',
-          }}
-          onMouseEnter={e => {
-            e.currentTarget.style.transform = 'scale(1.1)';
-            e.currentTarget.style.boxShadow = '0 6px 20px rgba(245,197,24,0.6)';
-          }}
-          onMouseLeave={e => {
-            e.currentTarget.style.transform = 'scale(1)';
-            e.currentTarget.style.boxShadow = '0 4px 14px rgba(245,197,24,0.45)';
-          }}
-        >
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-            <path d="M9 3.5V14.5M9 14.5L4.5 10M9 14.5L13.5 10"
-              stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </a>
+          {/* ── Grid ── */}
+          <div className="tst-grid">
 
-      </div>
+            {/* Featured — spans both rows */}
+            <div
+              className="tst-featured"
+              style={{
+                gridColumn: '1', gridRow: '1 / 3',
+                position: 'relative', overflow: 'hidden', cursor: 'pointer',
+              }}
+              onMouseEnter={() => setHoveredFeat(true)}
+              onMouseLeave={() => setHoveredFeat(false)}
+            >
+              <img
+                src={testimonials.featured.img}
+                alt={testimonials.featured.name}
+                style={{
+                  width: '100%', height: '100%', objectFit: 'cover',
+                  objectPosition: 'center top', display: 'block',
+                  filter: hoveredFeat ? 'brightness(0.75)' : 'brightness(0.65)',
+                  transition: 'filter 0.3s ease, transform 0.4s ease',
+                  transform: hoveredFeat ? 'scale(1.03)' : 'scale(1)',
+                }}
+              />
+              <PlayOverlay size={64} />
+              <CardLabel name={testimonials.featured.name} subtitle={testimonials.featured.subtitle} />
+            </div>
 
-      </div> {/* end centered container */}
-    </section>
+            {/* Side cards */}
+            {testimonials.side.map((t, i) => (
+              <div
+                key={t.name}
+                className={`tst-side-${i}`}
+                style={{
+                  gridColumn: '2', gridRow: i + 1,
+                  position: 'relative', overflow: 'hidden', cursor: 'pointer',
+                }}
+                onMouseEnter={() => setHoveredSide(i)}
+                onMouseLeave={() => setHoveredSide(null)}
+              >
+                <img
+                  src={t.img}
+                  alt={t.name}
+                  style={{
+                    width: '100%', height: '100%', objectFit: 'cover',
+                    objectPosition: 'center top', display: 'block',
+                    filter: hoveredSide === i ? 'brightness(0.75)' : 'brightness(0.65)',
+                    transition: 'filter 0.3s ease, transform 0.4s ease',
+                    transform: hoveredSide === i ? 'scale(1.03)' : 'scale(1)',
+                  }}
+                />
+                <PlayOverlay size={44} />
+                <CardLabel name={t.name} subtitle={t.subtitle} small />
+              </div>
+            ))}
+
+            {/* Yellow down-arrow button */}
+            <a
+              href="#contact"
+              aria-label="Scroll down"
+              style={{
+                position: 'absolute', bottom: '-22px', right: '0px', zIndex: 10,
+                width: '44px', height: '44px', borderRadius: '50%',
+                background: '#F5C518', display: 'flex',
+                alignItems: 'center', justifyContent: 'center',
+                boxShadow: '0 4px 14px rgba(245,197,24,0.45)',
+                textDecoration: 'none', transition: 'transform 0.2s, box-shadow 0.2s',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.1)'; e.currentTarget.style.boxShadow = '0 6px 20px rgba(245,197,24,0.6)'; }}
+              onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.boxShadow = '0 4px 14px rgba(245,197,24,0.45)'; }}
+            >
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M9 3.5V14.5M9 14.5L4.5 10M9 14.5L13.5 10"
+                  stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </a>
+          </div>
+
+        </div>
+      </section>
+    </>
   );
 };
 

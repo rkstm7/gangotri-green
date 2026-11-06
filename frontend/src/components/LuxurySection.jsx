@@ -333,17 +333,37 @@ const LuxurySection = () => {
   return (
     <>
       <style>{KF}</style>
+      <style>{`
+        .lx-section { position: relative; width: 100%; background: #141414; overflow: hidden; min-height: 900px; }
+        .lx-main-row { position: relative; z-index: 2; display: flex; align-items: stretch; min-height: 900px; max-width: 1200px; margin: 0 auto; }
+        .lx-woman-col { position: relative; flex-shrink: 0; width: 520px; min-height: 900px; overflow: visible; }
+        .lx-right-col { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 120px 40px 80px 20px; }
+        .lx-cards-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; width: 100%; }
+        .lx-heading { font-size: 54px; }
+        .lx-btns { display: flex; gap: 14px; margin-bottom: 48px; flex-wrap: wrap; }
 
-      <section
-        ref={ref}
-        style={{
-          position: 'relative',
-          width: '100%',
-          background: '#141414',
-          overflow: 'hidden',
-          minHeight: '900px',
-        }}
-      >
+        @media (max-width: 1100px) {
+          .lx-woman-col { width: 380px; }
+          .lx-heading { font-size: 42px !important; }
+        }
+        @media (max-width: 900px) {
+          .lx-section { min-height: auto; }
+          .lx-main-row { flex-direction: column; min-height: auto; }
+          .lx-woman-col { display: none; }
+          .lx-right-col { padding: 60px 40px 60px; }
+          .lx-cards-grid { grid-template-columns: repeat(2, 1fr); }
+          .lx-heading { font-size: 36px !important; }
+        }
+        @media (max-width: 560px) {
+          .lx-right-col { padding: 48px 20px 48px; }
+          .lx-heading { font-size: 28px !important; letter-spacing: -0.5px !important; }
+          .lx-cards-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+          .lx-btns { flex-direction: column; }
+          .lx-btns a { width: 100%; text-align: center; justify-content: center; }
+        }
+      `}</style>
+
+      <section ref={ref} className="lx-section">
         {/* ── Subtle gold radial glow — top right ── */}
         <div style={{
           position: 'absolute',
@@ -388,23 +408,10 @@ const LuxurySection = () => {
         }} />
 
         {/* ════════════ MAIN ROW ════════════ */}
-        <div style={{
-          position: 'relative', zIndex: 2,
-          display: 'flex',
-          alignItems: 'stretch',
-          minHeight: '900px',
-          maxWidth: '1200px',
-          margin: '0 auto',
-        }}>
+        <div className="lx-main-row">
 
           {/* ════ LEFT — woman image ════ */}
-          <div style={{
-            position: 'relative',
-            flexShrink: 0,
-            width: '520px',
-            minHeight: '900px',
-            overflow: 'visible',
-          }}>
+          <div className="lx-woman-col">
             {/* Subtle vertical gold line behind image */}
             <div style={{
               position: 'absolute',
@@ -447,13 +454,7 @@ const LuxurySection = () => {
           </div>
 
           {/* ════ RIGHT — text + cards ════ */}
-          <div style={{
-            flex: 1,
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            padding: '120px 40px 80px 20px',
-          }}>
+          <div className="lx-right-col">
 
             {/* Eyebrow */}
             <div style={{
@@ -477,8 +478,8 @@ const LuxurySection = () => {
 
             {/* Heading */}
             <div style={{ animation: a('lxSlideLeft', 'lxSlideRight', 0.85, 0.35), marginBottom: '22px' }}>
-              <h2 style={{
-                fontSize: '54px', fontWeight: '900',
+              <h2 className="lx-heading" style={{
+                fontWeight: '900',
                 color: 'white', lineHeight: '1.08',
                 letterSpacing: '-1px', margin: 0,
                 position: 'relative', display: 'inline-block',
@@ -528,9 +529,7 @@ const LuxurySection = () => {
             }} />
 
             {/* Buttons */}
-            <div style={{
-              display: 'flex', gap: '14px',
-              marginBottom: '48px', flexWrap: 'wrap',
+            <div className="lx-btns" style={{
               animation: a('lxFadeUp', 'lxFadeDown', 0.7, 0.62),
             }}>
               <a
@@ -587,12 +586,7 @@ const LuxurySection = () => {
             </div>
 
             {/* 4 Feature cards */}
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(4, 1fr)',
-              gap: '14px',
-              width: '100%',
-            }}>
+            <div className="lx-cards-grid">
               {FEATURES.map((f, i) => (
                 <FeatureCard
                   key={f.title}

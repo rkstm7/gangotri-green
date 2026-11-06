@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import gangotriLogo from '../assets/gangotri-logo.webp';
 
 /* ════════════════════════════════════════════════
    KEYFRAMES
@@ -208,6 +209,26 @@ const WelcomeScreen = ({ onEnter }) => {
           animation: 'wsOverlay 1.2s ease 0s both',
         }} />
 
+        {/* ── Top-left Logo ── */}
+        <div style={{
+          position: 'absolute',
+          top: '20px',
+          left: '24px',
+          zIndex: 6,
+          animation: active ? `wsLogoDrop 1.0s cubic-bezier(0.22,1,0.36,1) 0.5s both` : 'none',
+          filter: 'drop-shadow(0 4px 16px rgba(201,160,48,0.35))',
+        }}>
+          <img
+            src={gangotriLogo}
+            alt="Gangotri Green"
+            style={{
+              height: '60px',
+              width: 'auto',
+              objectFit: 'contain',
+            }}
+          />
+        </div>
+
         {/* Radial gold glow center */}
         <div style={{
           position: 'absolute', top: '50%', left: '50%',
@@ -265,23 +286,6 @@ const WelcomeScreen = ({ onEnter }) => {
             background: 'linear-gradient(to right, transparent, #c9a030, #F5C518, #c9a030, transparent)',
             animation: a('wsLineExpand', 1.0, 0.3),
           }} />
-
-          {/* Logo */}
-          <div style={{
-            marginBottom: '28px',
-            animation: a('wsLogoDrop', 1.0, 0.5),
-            filter: 'drop-shadow(0 8px 32px rgba(201,160,48,0.35))',
-          }}>
-            <img
-              src="/src/assets/gangotri-logo.webp"
-              alt="Gangotri Green"
-              style={{
-                height: '110px',
-                width: 'auto',
-                objectFit: 'contain',
-              }}
-            />
-          </div>
 
           {/* Diamond divider */}
           <div style={{
@@ -349,6 +353,8 @@ const WelcomeScreen = ({ onEnter }) => {
           <div style={{
             display: 'flex', gap: '0',
             marginBottom: '52px',
+            flexWrap: 'wrap',
+            justifyContent: 'center',
           }}>
             {STATS.map((s, i) => (
               <div key={s.label} style={{
