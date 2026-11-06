@@ -1,0 +1,377 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  background: white;
+}
+
+/* ══════════════════════════════════
+   HERO SECTION
+   Design height: ~550px (image analysis)
+   Wave takes ~110px at bottom
+══════════════════════════════════ */
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 700px;
+  overflow: hidden;
+}
+
+/* Green field background */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1600&q=80');
+  background-size: cover;
+  background-position: center 50%;
+  z-index: 0;
+}
+
+/* Left-dark overlay */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.50) 0%,
+    rgba(0, 0, 0, 0.28) 38%,
+    rgba(0, 0, 0, 0.00) 65%
+  );
+  z-index: 1;
+}
+
+/* ── Woman image ── 
+   Blend edges into background — no hard border visible
+*/
+.hero-woman {
+  position: absolute;
+  right: 7%;
+  bottom: 100px;
+  height: 86%;
+  width: auto;
+  z-index: 3;
+  object-fit: contain;
+  object-position: bottom center;
+  pointer-events: none;
+}
+
+/* ── Bottom white wave ──
+   Design analysis:
+   - Left ~30% of width: flat/gently curves starting at y≈55 (out of 110)
+   - Then dips DOWN toward center-right
+   - Right side rises back up but stays lower than left
+   - Creates a wide flowing S-curve
+   - White fill below the curve
+   SVG viewBox height = 110px matching wave container
+*/
+.hero-wave {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  z-index: 4;
+  line-height: 0;
+}
+
+/* ── Content wrapper ──
+   Design: text starts ~30% from top of hero
+   vertically centered in upper half
+*/
+.hero-content {
+  position: relative;
+  z-index: 3;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-top: 30px;
+  padding-left: 140px;     /* shifted right */
+  padding-bottom: 120px;
+}
+
+/* ══════════════════════════════════
+   DIVIDER  ◇
+══════════════════════════════════ */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 14px 0 16px;
+}
+
+/* Hero section uses manually rendered divider lines (animated),
+   so ::before / ::after are only shown in non-hero contexts */
+.divider::before,
+.divider::after {
+  content: none;
+}
+
+.divider-diamond {
+  width: 7px;
+  height: 7px;
+  background: rgba(255, 255, 255, 0.88);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
+
+/* ══════════════════════════════════
+   CTA BUTTON — pill shape
+   Design: rounded pill, thin white border, no bg
+══════════════════════════════════ */
+.btn-explore {
+  display: inline-block;
+  border: 1.5px solid rgba(255, 255, 255, 0.88);
+  color: white;
+  padding: 12px 32px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 500;
+  background: transparent;
+  transition: background 0.2s, color 0.2s;
+  text-decoration: none;
+  letter-spacing: 0.2px;
+  cursor: pointer;
+}
+
+.btn-explore:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+/* ══════════════════════════════════
+   NAVBAR
+══════════════════════════════════ */
+.navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+}
+
+.logo-circle {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.68);
+  background: rgba(255, 255, 255, 0.10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.logo-circle span {
+  color: white;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.hamburger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 4px;
+}
+
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: white;
+  border-radius: 2px;
+}
+
+.nav-dropdown {
+  position: absolute;
+  top: 64px;
+  right: 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.15);
+  min-width: 175px;
+  overflow: hidden;
+}
+
+.nav-dropdown a {
+  display: block;
+  padding: 11px 20px;
+  font-size: 13.5px;
+  color: #374151;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+
+.nav-dropdown a:hover {
+  background: #f3f4f6;
+  color: #b8860b;
+}
+
+/* Drawer scroll hide */
+.drawer-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+.drawer-scroll::-webkit-scrollbar-thumb {
+  background: #e5e7eb;
+  border-radius: 4px;
+}
+
+/* ══════════════════════════════════
+   DRAWER ANIMATIONS
+══════════════════════════════════ */
+
+/* Backdrop fade */
+.drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  z-index: 98;
+  transition: background 0.35s ease;
+}
+.drawer-backdrop.open {
+  background: rgba(0, 0, 0, 0.40);
+}
+
+/* Drawer slide from right */
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 100vh;
+  background: white;
+  z-index: 99;
+  transform: translateX(100%);
+  transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  box-shadow: -8px 0 40px rgba(0, 0, 0, 0.18);
+}
+.drawer.open {
+  transform: translateX(0);
+}
+
+/* Staggered nav link entrance */
+.drawer-link {
+  opacity: 0;
+  transform: translateX(24px);
+  transition:
+    opacity 0.28s ease,
+    transform 0.28s ease,
+    background 0.22s ease,
+    color 0.22s ease,
+    border-color 0.22s ease;
+}
+.drawer.open .drawer-link {
+  opacity: 1;
+  transform: translateX(0);
+}
+/* Stagger delays for each item */
+.drawer.open .drawer-link:nth-child(1)  { transition-delay: 0.08s; }
+.drawer.open .drawer-link:nth-child(2)  { transition-delay: 0.11s; }
+.drawer.open .drawer-link:nth-child(3)  { transition-delay: 0.14s; }
+.drawer.open .drawer-link:nth-child(4)  { transition-delay: 0.17s; }
+.drawer.open .drawer-link:nth-child(5)  { transition-delay: 0.20s; }
+.drawer.open .drawer-link:nth-child(6)  { transition-delay: 0.23s; }
+.drawer.open .drawer-link:nth-child(7)  { transition-delay: 0.26s; }
+.drawer.open .drawer-link:nth-child(8)  { transition-delay: 0.29s; }
+.drawer.open .drawer-link:nth-child(9)  { transition-delay: 0.32s; }
+.drawer.open .drawer-link:nth-child(10) { transition-delay: 0.35s; }
+
+/* Hover: yellow left border + light bg */
+.drawer-link:hover:not(.active-link) {
+  background: #FDE98A !important;
+  color: #5a4200 !important;
+  font-weight: 600 !important;
+  border-left: 4px solid #F5C518 !important;
+  padding-left: 24px !important;
+}
+
+/* Active link */
+.active-link {
+  background: #F5C518 !important;
+  color: white !important;
+  font-weight: 700 !important;
+  border-left: 4px solid #d4a017 !important;
+  padding-left: 24px !important;
+}
+
+/* Hamburger → X morph */
+.hamburger-bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: white;
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease, width 0.3s ease;
+  transform-origin: center;
+}
+.hamburger.is-open .hamburger-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.hamburger.is-open .hamburger-bar:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.hamburger.is-open .hamburger-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Close X button in drawer */
+.drawer-close-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b7280;
+  font-size: 18px;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+.drawer-close-btn:hover {
+  background: #f3f4f6;
+  color: #111;
+  transform: rotate(90deg);
+}
+
+/* ══════════════════════════════════
+   WHATSAPP FLOAT
+══════════════════════════════════ */
+.whatsapp-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 0px;           /* flush to edge like design */
+  z-index: 999;
+  width: 58px;
+  height: 58px;
+  background: #7DC243;  /* light green — exact from design */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(125, 194, 67, 0.45);
+  text-decoration: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.whatsapp-btn:hover {
+  transform: scale(1.10);
+  box-shadow: 0 6px 22px rgba(125, 194, 67, 0.60);
+}
