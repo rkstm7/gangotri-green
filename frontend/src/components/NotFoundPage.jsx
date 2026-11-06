@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import gangotriLogo from '../assets/gangotri-logo.webp';
 
 /* ── Animated floating particles ─────────────────────────── */
 const Particle = ({ style }) => (
@@ -335,7 +336,7 @@ const NotFoundPage = () => {
         }}>
           {/* Gangotri Logo */}
           <img
-            src="/src/assets/gangotri-logo.webp"
+            src={gangotriLogo}
             alt="Gangotri Green"
             style={{ width: '26px', height: '26px', objectFit: 'contain', borderRadius: '3px' }}
           />

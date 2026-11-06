@@ -1,3 +1,5 @@
+import gangotriLogo from '../assets/gangotri-logo.webp';
+
 const ProjectVideoSection = () => {
   return (
     <>
@@ -101,7 +103,7 @@ const ProjectVideoSection = () => {
               display: 'flex', alignItems: 'center', gap: '10px',
             }}>
               <img
-                src="/src/assets/gangotri-logo.webp"
+                src={gangotriLogo}
                 alt="Gangotri Green"
                 style={{
                   width: '44px', height: '44px',

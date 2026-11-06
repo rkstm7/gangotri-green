@@ -1,3 +1,5 @@
+import gangotriLogo from '../assets/gangotri-logo.webp';
+
 const seededRand = (seed) => {
   let s = seed;
   return () => { s = (s * 16807) % 2147483647; return (s - 1) / 2147483646; };
@@ -221,12 +223,14 @@ const FooterSection = () => {
 
         {/* Column 4: Brand & Address */}
         <div style={{ textAlign: 'right' }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '10px', marginBottom: '16px' }}>
-            <div style={{ textAlign: 'right' }}>
-              <div style={{ fontSize: '13px', fontWeight: '800', color: '#c9a030', letterSpacing: '1px', lineHeight: '1.2' }}>GANGOTRI GREEN</div>
-              <div style={{ fontSize: '11px', fontWeight: '600', color: '#888', letterSpacing: '2px' }}>PROPERTIES</div>
-            </div>
-            <img src="/src/assets/gangotri-logo.webp" alt="Gangotri Green" style={{ width: '44px', height: '44px', objectFit: 'contain', borderRadius: '4px' }} />
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '10px', marginBottom: '16px' }}>
+            <img
+              src={gangotriLogo}
+              alt="Gangotri Green"
+              className="footer-logo"
+              style={{ width: '140px', height: 'auto', objectFit: 'contain' }}
+            />
+            <div style={{ fontSize: '11px', fontWeight: '600', color: '#888', letterSpacing: '2px' }}>PROPERTIES</div>
           </div>
           <p style={{ fontSize: '13px', color: '#555', lineHeight: '1.65', marginBottom: '14px' }}>
             Gangotri Green Properties India Private Limited<br/>
