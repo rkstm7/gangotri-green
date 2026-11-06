@@ -237,7 +237,7 @@ const AboutSection = () => {
                   color: 'white', fontSize: '16px', fontWeight: '700',
                   letterSpacing: '1.5px', textTransform: 'uppercase', lineHeight: '1.3',
                 }}>
-                  Mr. Vishal Chugera
+                  Mr. AKSHAT GUPTA
                 </div>
                 <div style={{
                   color: 'rgba(255,255,255,0.80)', fontSize: '11px',
